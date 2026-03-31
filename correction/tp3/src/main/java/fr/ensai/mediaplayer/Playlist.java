@@ -35,11 +35,11 @@ public class Playlist {
     }
 
     public List<Media> getMedias() {
-        return medias;
+        return this.medias;
     }
 
     public int getTotalDuration() {
-        return totalDuration;
+        return this.totalDuration;
     }
 
     /**
@@ -50,6 +50,18 @@ public class Playlist {
     public void addMedia(Media media) {
         this.medias.add(media);
         this.totalDuration += media.getDuration();
+    }
+
+    /**
+     * Adds a list of medias to the playlist.
+     *
+     * @param medias The list of medias to add.
+     */
+    public void addMedia(List<Media> medias) {
+        for (Media media : medias) {
+            this.addMedia(media);
+            this.totalDuration += media.getDuration();
+        }
     }
 
     /**
