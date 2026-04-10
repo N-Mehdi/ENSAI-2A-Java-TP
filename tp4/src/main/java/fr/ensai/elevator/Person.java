@@ -14,6 +14,7 @@ public class Person {
     private static final String CHARS = "abcdefghijklmnopqrstuvwxyz";
     private static int NEXT_CHAR_INDEX = 0;
 
+
     private static Random random = new Random();
 
     /**
@@ -44,7 +45,7 @@ public class Person {
      * @return the target floor number
      */
     private static int generateTargetFloor() {
-        return random.nextInt(4);
+        return random.nextInt(Config.getInt("hotel.floor.number"));
     }
 
     public String getNickname() {

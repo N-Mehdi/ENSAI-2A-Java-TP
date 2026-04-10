@@ -82,6 +82,14 @@ public class Elevator {
     }
 
     /**
+     * Returns a the destination queue.
+     * @return the list of destination queues.
+     */
+    public List<Integer> getDestinationQueue(){
+        return this.destinationQueue;
+    }
+
+    /**
      * Adds a new floor to the destination queue if it is not already present.
      * 
      * @param floor the floor number to add
@@ -129,7 +137,7 @@ public class Elevator {
      */
     public void loadPassengers(Floor floor) {
 
-        while (this.passengers.size() < this.capacity) {
+        while (this.isFull() == false) {
             Person person = floor.boardNextPerson();
             if (person == null)
                 break;
@@ -178,5 +186,15 @@ public class Elevator {
 
         return "[" + padded + "]" +
                 (unloaded.isBlank() ? "" : " " + unloaded);
+    }
+
+    /**
+     * Returns true if the elevator is full, false if not, after comparing
+     * the maximum size of the elevator with its number of passengers
+     * 
+     * @return a boolean
+     */
+    public boolean isFull(){
+        return this.passengers.size() == this.capacity;
     }
 }

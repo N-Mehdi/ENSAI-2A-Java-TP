@@ -70,12 +70,21 @@ public class Floor {
     }
 
     /**
-     * Press the button to call the first elevator.
-     * Requests the first elevator to stop at this floor.
+     * Press the button to call the an elevator, respecting the rules:
+     * If an elevator is already on its way to that floor, do nothing.
+     * Otherwise, find the least busy elevator and add the floor to the 
+     * end of its destinations list.
      * 
      * @param elevators the list of elevators available in the hotel
      */
     public void requestElevator(List<Elevator> elevators) {
+        for (int i = 0; i < elevators.size(); i++){
+            if (elevators.get(i).getDestinationQueue().contains(this.getNumber())){
+                break;
+            } else {
+                Elevator leastBusyElevator =  
+            }
+        }
         elevators.get(0).addDestination(this.number);
     }
 
