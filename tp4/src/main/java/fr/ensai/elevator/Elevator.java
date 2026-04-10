@@ -2,6 +2,7 @@ package fr.ensai.elevator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -25,6 +26,9 @@ public class Elevator {
     private List<Integer> destinationQueue;
     private List<Person> passengers;
     private List<Person> lastUnloaded;
+
+    private static Random random = new Random();
+
 
     /**
      * Constructs a new Elevator with the specified parameters.
@@ -90,6 +94,14 @@ public class Elevator {
      */
     public List<Integer> getDestinationQueue(){
         return this.destinationQueue;
+    }
+
+    /**
+     * Returns the capacity of the elevator
+     * @return the capacity
+     */
+    public int getCapacity(){
+        return this.capacity;
     }
 
     /**
@@ -200,4 +212,19 @@ public class Elevator {
     public boolean isFull(){
         return this.passengers.size() == this.capacity;
     }
+
+    /** Fills an elevator with a specific number of passengers
+     * @param passengerNumber the number of passengers to add in the elevator
+    */
+    public void fillElevatorPassenger(int passengerNumber){
+        while (this.capacity >= passengerNumber){
+            for (int i = 0; i < passengerNumber; i++){
+                int floorsNumber = Config.getInt("hotel.floors.number");
+                int randomStartingFloor = random.nextInt(floorsNumber);
+                Person passenger = new Person(randomStartingFloor);
+                this.passengers.add(passenger);
+
+        }
+    }
+}
 }

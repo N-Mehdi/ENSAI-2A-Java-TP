@@ -32,6 +32,7 @@ public class Main {
         for (int i = 0; i < elevatorNumber; i++){
         elevators.add(new Elevator(i, 0, elevatorCapacity));
         }
+        elevators.add(new CrazyElevator(elevatorNumber, 0, elevatorCapacity));
         Hotel hotel = new Hotel(floors, elevators);
 
         // --------------------------------------------------------------------
