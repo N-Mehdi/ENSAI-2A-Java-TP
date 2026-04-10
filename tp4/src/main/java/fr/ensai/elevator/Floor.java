@@ -79,13 +79,18 @@ public class Floor {
      */
     public void requestElevator(List<Elevator> elevators) {
         for (int i = 0; i < elevators.size(); i++){
+            int leastNumber = elevators.get(0).getPassengers().size();
+            int elevatorId = 0;
             if (elevators.get(i).getDestinationQueue().contains(this.getNumber())){
                 break;
             } else {
-                Elevator leastBusyElevator =  
+                int numberPerson = elevators.get(i).getPassengers().size();
+                if (numberPerson < leastNumber) {
+                    elevatorId = i;
+                }
             }
+        elevators.get(elevatorId).addDestination(this.number);
         }
-        elevators.get(0).addDestination(this.number);
     }
 
     /**

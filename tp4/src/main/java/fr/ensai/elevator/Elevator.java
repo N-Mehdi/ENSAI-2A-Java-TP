@@ -50,6 +50,9 @@ public class Elevator {
         return this.currentFloor;
     }
 
+    public List<Person> getPassengers() {
+        return this.passengers;
+    }
     /**
      * Checks if the elevator has the specified floor in its destination queue.
      * 
